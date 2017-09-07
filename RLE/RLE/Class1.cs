@@ -48,9 +48,9 @@ namespace RLE
 
                     }
                 }
-                string ruta = Directory.GetCurrentDirectory();
-                ruta = ruta + @"\RLE.rlex";
-                using (StreamWriter EscritorTexto = new StreamWriter(ruta))
+                string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                
+                using (StreamWriter EscritorTexto = new StreamWriter(ruta + @"\ RLE.rlex"))
                 {
                     foreach (var lineas in TextoCodificado)
                     {
