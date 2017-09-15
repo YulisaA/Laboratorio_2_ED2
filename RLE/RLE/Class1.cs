@@ -9,64 +9,86 @@ namespace RLE
 {
     public class Run_Lenght_Encode
     {
-        public const char Espacio = ' ';
 
-        public static string Codificar(string Direccion)
+
+        public static byte[] Codificar(string aDireccion)
         {
             try
             {
-                string Lectura = "";
-                string Linea = "";
-                StreamReader Archivo = new StreamReader(Direccion);
 
-                while ((Lectura = Archivo.ReadLine()) != null)
+                using (var Archivo = new FileStream(aDireccion, FileMode.Open, FileAccess.Read))
                 {
-                    Linea = Linea + Lectura;
-                }
-
-
-                string TextoCodificado = string.Empty;
-                int contador = 1;
-                for (int i = 0; i < Linea.Length - 1; i++)
-                {
-                    if (Linea[i] == Linea[i+1] || i == Linea.Length-2)
+                    using (var LecturaBytes = new BinaryReader(Archivo))
                     {
-                        if (Linea[i] == Linea[i+1]  && i== Linea.Length-2)
-                        {
-                            contador++;
-                            TextoCodificado += contador + (char.IsNumber(Linea[i]) ? "" + Espacio : "") + Linea[i];
-                        }
-                        if (Linea[i] != Linea[i+1] && i == Linea.Length -2)
-                        {
-                            TextoCodificado += (char.IsNumber(Linea[i + 1]) ? "" + Espacio : "") + Linea[i + 1];
-                            contador = 1;
-                        }
-                        else
-                        {
-                            contador++;
-                        }
+                        byte[] BytesLeidos = new byte[Archivo.Length];
+                        BytesLeidos = LecturaBytes.ReadBytes(Convert.ToInt32(Archivo.Length));
 
+                        List<byte> BytesEnlistados = new List<byte>();
+                        byte a = 0;
+                        int conteo = 0;
+                        byte CanditaddeBytes;
+
+
+
+                        for (int i = 0; i < BytesLeidos.Length; i++)
+                        {
+                            if (i == 0)
+                            {
+                                a = BytesLeidos[i];
+                                conteo = 1;
+                            }
+                            else
+                            {
+                                if (a == BytesLeidos[i])
+                                {
+                                    conteo++;
+                                }
+                                else
+                                {
+                                    if (conteo > 255)
+                                    {
+                                        for (int n = 0; n < conteo / 255; n++)
+                                        {
+                                            CanditaddeBytes = Convert.ToByte(255);
+                                            BytesEnlistados.Add(CanditaddeBytes);
+                                            BytesEnlistados.Add(BytesLeidos[i]);
+                                        }
+
+                                        CanditaddeBytes = Convert.ToByte(conteo % 255);
+                                        BytesEnlistados.Add(a);
+                                        BytesEnlistados.Add(BytesLeidos[i]);
+                                        a = BytesLeidos[i];
+                                        conteo = 1;
+                                    }
+                                    else
+                                    {
+                                        CanditaddeBytes = Convert.ToByte(conteo);
+                                        BytesEnlistados.Add(CanditaddeBytes);
+                                        BytesEnlistados.Add(a);
+                                        a = BytesLeidos[i];
+                                        conteo = 1;
+                                    }
+                                }
+
+                            }
+                            if (i == BytesLeidos.Length - 1)
+                            {
+                                CanditaddeBytes = Convert.ToByte(conteo);
+                                BytesEnlistados.Add(CanditaddeBytes);
+                                BytesEnlistados.Add(BytesLeidos[i]);
+                            }
+
+                        }
+                        return BytesEnlistados.ToArray();
                     }
                 }
-                string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                
-                using (StreamWriter EscritorTexto = new StreamWriter(ruta + @"\ RLE.rlex"))
-                {
-                    foreach (var lineas in TextoCodificado)
-                    {
-                        EscritorTexto.Write(lineas);
-                    }
-                }
 
-                string mensaje = "Comprension finalizada";
-
-
-                return mensaje;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                Console.WriteLine("Problema en Codificar RLE:" + e.Message);
+                return null;
             }
         }
     }
