@@ -91,5 +91,46 @@ namespace RLE
                 return null;
             }
         }
+        public static byte[] Decodificar(byte[] textoCodificado)
+        {
+            List<byte> BytesDecodificados = new List<byte>();
+            try
+            {
+
+                for (int i = 0; i < textoCodificado.Length; i = i + 2)
+                {
+                    int Evaluador = Convert.ToInt32(textoCodificado[i]);
+                    while (Evaluador > 0)
+                    {
+                        BytesDecodificados.Add(textoCodificado[i + 1]);
+                        Evaluador--;
+                    }
+                }
+
+                return BytesDecodificados.ToArray();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Probelma en Descompr in RLD:" + e.Message);
+                return null;
+            }
+        }
+
+
+        public static void EscrituraArchivo(byte[] texto)
+        {
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            using (var outputFile = new FileStream("C:\\Users\\ASUS\\Desktop\\prueba1234.txt", FileMode.Append))
+            {
+                using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
+                {
+                    foreach (var item in texto)
+                    {
+                        writer.Write(item);
+                    }
+                }
+            }
+        
     }
 }
