@@ -11,7 +11,7 @@ namespace RLE
     {
 
 
-        public static byte[] Codificar(string aDireccion)
+        public byte[] Codificar(string aDireccion)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace RLE
                 return null;
             }
         }
-        public static byte[] Decodificar(byte[] textoCodificado)
+        public byte[] Decodificar(byte[] textoCodificado)
         {
             List<byte> BytesDecodificados = new List<byte>();
             try
@@ -117,11 +117,11 @@ namespace RLE
         }
 
 
-        public static void EscrituraArchivo(byte[] texto)
+        public void EscrituraArchivoCodificado(byte[] texto)
         {
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            using (var outputFile = new FileStream("C:\\Users\\ASUS\\Desktop\\prueba1234.txt", FileMode.Append))
+            using (var outputFile = new FileStream(ruta+"\\Codificado.rlex", FileMode.Append))
             {
                 using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
                 {
@@ -131,6 +131,24 @@ namespace RLE
                     }
                 }
             }
-        
+        }
+
+
+        public void EscrituraArchivoDecodificado(byte[] textoCod)
+        {
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            using (var outputFile = new FileStream(ruta+"\\Decodificado.rlex", FileMode.Append))
+            {
+                using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
+                {
+                    foreach (var item in textoCod)
+                    {
+                        writer.Write(item);
+                    }
+                }
+            }
+        }
+
     }
 }
