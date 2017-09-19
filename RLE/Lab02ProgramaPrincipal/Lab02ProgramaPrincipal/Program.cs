@@ -55,7 +55,7 @@ namespace Lab02ProgramaPrincipal
             {
                 byte[] textoCodificado = RLELibreria.Codificar(DirecciónArchivoOriginal);
                 byte[] textoDecodificado = RLELibreria.Decodificar(textoCodificado);
-                RLELibreria.EscrituraArchivoDecodificado(textoDecodificado);
+                RLELibreria.EscrituraArchivoDecodificado(textoDecodificado, DirecciónArchivoOriginal);
                 Console.WriteLine("Archivo descomprimido exitosamente.");
 
             }
