@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="RLE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Desktop\Laboratorio_2_ED2-Serie_uno\RLE\RLE\bin\Debug\RLE.dll</HintPath>
+      <HintPath>.\RLE.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
