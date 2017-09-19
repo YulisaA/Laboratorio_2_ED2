@@ -134,11 +134,12 @@ namespace RLE
         }
 
 
-        public void EscrituraArchivoDecodificado(byte[] textoCod)
+        public void EscrituraArchivoDecodificado(byte[] textoCod, string Ruta)
         {
+            DirectoryInfo Extencion = new DirectoryInfo(Ruta);
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            using (var outputFile = new FileStream(ruta+"\\Decodificado.rlex", FileMode.Append))
+            using (var outputFile = new FileStream(ruta+"\\Decodificado.rlex"+ Extencion.Extension, FileMode.Append))
             {
                 using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
                 {
