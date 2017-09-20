@@ -5,3 +5,10 @@ C:\Users\ASUS\Desktop\Laboratorio_2_ED2-master\RLE\Lab02ProgramaPrincipal\Lab02P
 C:\Users\ASUS\Desktop\Laboratorio_2_ED2-master\RLE\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Desktop\Laboratorio_2_ED2-master\RLE\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.exe
 C:\Users\ASUS\Desktop\Laboratorio_2_ED2-master\RLE\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.pdb
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\bin\Debug\Lab02ProgramaPrincipal.exe.config
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.exe
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.pdb
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\bin\Debug\Lab02ProgramaPrincipal.exe
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\bin\Debug\Lab02ProgramaPrincipal.pdb
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\bin\Debug\RLE.dll
+C:\Users\ASUS\Documents\GitHub\Laboratorio_2_ED2\Lab02ProgramaPrincipal\Lab02ProgramaPrincipal\obj\Debug\Lab02ProgramaPrincipal.csprojResolveAssemblyReference.cache
