@@ -14,7 +14,7 @@ namespace Lab02ProgramaPrincipal
         {
 
 
-            Console.WriteLine("SERIE 3: Seleccione un metodo para comprención de datos : 1) RLE / 2) Huffman");
+            Console.WriteLine("SERIE 3: Seleccione un metodo para compresión de datos : 1) RLE / 2) Huffman");
             string seleccion = Console.ReadLine();
 
             switch (seleccion)
