@@ -27,18 +27,21 @@ namespace Lab02ProgramaPrincipal
                         string textoIngresado = "";
 
 
-                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.comp";
-
+                        
                         //Obtener comandos
                         Console.WriteLine("Ingrese el comando y la ruta del archivo:");
                         textoIngresado = Console.ReadLine();
                         string DirecciónArchivoOriginal = validar.ObtenerDirección(textoIngresado);
 
+                        DirectoryInfo InfoArchivo = new DirectoryInfo(DirecciónArchivoOriginal);
+                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.comp";
+
+
                         //Comprimir
                         if (validar.validarComprimir(textoIngresado) == true)
                         {
                             byte[] textoCodificado = RLELibreria.Codificar(DirecciónArchivoOriginal);
-                            RLELibreria.EscrituraArchivoCodificado(textoCodificado);
+                            RLELibreria.EscrituraArchivoCodificadoComp(textoCodificado, InfoArchivo.Name);
                             Console.WriteLine("Archivo comprimido exitosamente.");
                             //INFORMACIÓN DE LOS ARCHIVOS
                             Console.WriteLine("");
@@ -64,7 +67,7 @@ namespace Lab02ProgramaPrincipal
                         {
                             byte[] textoCodificado = RLELibreria.Codificar(DirecciónArchivoOriginal);
                             byte[] textoDecodificado = RLELibreria.Decodificar(textoCodificado);
-                            RLELibreria.EscrituraArchivoDecodificado(textoDecodificado, DirecciónArchivoOriginal);
+                            RLELibreria.EscrituraArchivoDecodificadoComp(textoDecodificado, DirecciónArchivoOriginal, InfoArchivo.Name);
                             Console.WriteLine("Archivo descomprimido exitosamente.");
 
                         }
@@ -81,7 +84,7 @@ namespace Lab02ProgramaPrincipal
                         DirectoryInfo InfoArchivo = new DirectoryInfo(RutaOriginal);
 
 
-                        string DirecciónArchivoComprimidoHuffman = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CodificadoHuffman.comp";
+                        string DirecciónArchivoComprimidoHuffman = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + InfoArchivo.Name +"CodificadoHuffman.comp";
                         string DirecciónArchivoDescomprimidoHuffman = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\"+InfoArchivo.Name+"DecodificadoHuffman.comp";
 
                         Huffman.Codificar(RutaOriginal, DirecciónArchivoComprimidoHuffman);

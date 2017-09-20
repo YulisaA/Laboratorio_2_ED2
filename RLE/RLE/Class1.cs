@@ -134,6 +134,22 @@ namespace RLE
             }
         }
 
+        public void EscrituraArchivoCodificadoComp(byte[] texto, string nameFile)
+        {
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+
+            using (var outputFile = new FileStream(ruta + "\\" + nameFile + ".comp", FileMode.Append))
+            {
+                using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
+                {
+                    foreach (var item in texto)
+                    {
+                        writer.Write(item);
+                    }
+                }
+            }
+        }
 
         public void EscrituraArchivoDecodificado(byte[] textoCod, string Ruta, string name)
         {
@@ -141,6 +157,22 @@ namespace RLE
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             using (var outputFile = new FileStream(ruta+ "\\" +name + "Decodificado.rlex"+ extension.Extension, FileMode.Append))
+            {
+                using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
+                {
+                    foreach (var item in textoCod)
+                    {
+                        writer.Write(item);
+                    }
+                }
+            }
+        }
+        public void EscrituraArchivoDecodificadoComp(byte[] textoCod, string Ruta, string name)
+        {
+            DirectoryInfo extension = new DirectoryInfo(Ruta);
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            using (var outputFile = new FileStream(ruta + "\\" + name + "Decodificado.comp" + extension.Extension, FileMode.Append))
             {
                 using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
                 {
