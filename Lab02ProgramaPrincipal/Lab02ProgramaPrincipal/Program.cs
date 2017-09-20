@@ -34,7 +34,7 @@ namespace Lab02ProgramaPrincipal
                         string DirecciónArchivoOriginal = validar.ObtenerDirección(textoIngresado);
 
                         DirectoryInfo InfoArchivo = new DirectoryInfo(DirecciónArchivoOriginal);
-                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.comp";
+                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" +InfoArchivo.Name + ".comp";
 
 
                         //Comprimir
