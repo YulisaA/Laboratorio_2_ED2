@@ -14,7 +14,7 @@ namespace Lab02ProgramaPrincipal
         {
 
 
-            Console.WriteLine("Seleccione un metodo para comprención de datos : 1) RLE / 2) Huffman");
+            Console.WriteLine("SERIE 3: Seleccione un metodo para comprención de datos : 1) RLE / 2) Huffman");
             string seleccion = Console.ReadLine();
 
             switch (seleccion)
@@ -27,7 +27,7 @@ namespace Lab02ProgramaPrincipal
                         string textoIngresado = "";
 
 
-                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.rlex";
+                        string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.comp";
 
                         //Obtener comandos
                         Console.WriteLine("Ingrese el comando y la ruta del archivo:");
