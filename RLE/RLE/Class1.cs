@@ -111,17 +111,18 @@ namespace RLE
             }
             catch (Exception e)
             {
-                Console.WriteLine("Probelma en Descompr in RLD:" + e.Message);
+                Console.WriteLine("Problema en Descompr in RLD:" + e.Message);
                 return null;
             }
         }
 
 
-        public void EscrituraArchivoCodificado(byte[] texto)
+        public void EscrituraArchivoCodificado(byte[] texto, string nameFile)
         {
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            using (var outputFile = new FileStream(ruta+"\\Codificado.rlex", FileMode.Append))
+
+            using (var outputFile = new FileStream(ruta+"\\" + nameFile +".rlex", FileMode.Append))
             {
                 using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
                 {
@@ -134,12 +135,12 @@ namespace RLE
         }
 
 
-        public void EscrituraArchivoDecodificado(byte[] textoCod, string Ruta)
+        public void EscrituraArchivoDecodificado(byte[] textoCod, string Ruta, string name)
         {
-            DirectoryInfo Extencion = new DirectoryInfo(Ruta);
+            DirectoryInfo extension = new DirectoryInfo(Ruta);
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            using (var outputFile = new FileStream(ruta+"\\Decodificado.rlex"+ Extencion.Extension, FileMode.Append))
+            using (var outputFile = new FileStream(ruta+ "\\" +name + "Decodificado.rlex"+ extension.Extension, FileMode.Append))
             {
                 using (var writer = new BinaryWriter(outputFile, Encoding.ASCII))
                 {

@@ -17,19 +17,20 @@ namespace Lab02ProgramaPrincipal
             Validaciones validar = new Validaciones();
             string textoIngresado = "";
 
-
-            string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Codificado.rlex";
-
             //Obtener comandos
             Console.WriteLine("Ingrese el comando y la ruta del archivo:");
             textoIngresado = Console.ReadLine();
             string DirecciónArchivoOriginal = validar.ObtenerDirección(textoIngresado);
 
+            DirectoryInfo InfoArchivo = new DirectoryInfo(DirecciónArchivoOriginal);
+
+            string DirecciónArchivoComprimido = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + InfoArchivo.Name+ ".rlex";
+
             //Comprimir
             if (validar.validarComprimir(textoIngresado) == true)
             {
                 byte[] textoCodificado = RLELibreria.Codificar(DirecciónArchivoOriginal);
-                RLELibreria.EscrituraArchivoCodificado(textoCodificado);
+                RLELibreria.EscrituraArchivoCodificado(textoCodificado, InfoArchivo.Name);
                 Console.WriteLine("Archivo comprimido exitosamente.");
                 //INFORMACIÓN DE LOS ARCHIVOS
                 Console.WriteLine("");
@@ -55,7 +56,7 @@ namespace Lab02ProgramaPrincipal
             {
                 byte[] textoCodificado = RLELibreria.Codificar(DirecciónArchivoOriginal);
                 byte[] textoDecodificado = RLELibreria.Decodificar(textoCodificado);
-                RLELibreria.EscrituraArchivoDecodificado(textoDecodificado, DirecciónArchivoOriginal);
+                RLELibreria.EscrituraArchivoDecodificado(textoDecodificado, DirecciónArchivoOriginal, InfoArchivo.Name);
                 Console.WriteLine("Archivo descomprimido exitosamente.");
 
             }
